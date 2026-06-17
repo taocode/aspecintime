@@ -10,10 +10,10 @@
     />
     <span class="min-w-0">
       <span class="block font-display text-2xl text-parchment group-hover:text-amber">{{ .Site.Title }}</span>
-      <span class="site-nav__tagline text-xs uppercase tracking-[0.2em] text-ink-muted">{{ .Site.Params.tagline }}</span>
+      <span class="site-nav__tagline hidden text-xs uppercase tracking-[0.2em] text-ink-muted sm:block">{{ .Site.Params.tagline }}</span>
     </span>
   </a>
-  <ul class="site-nav__menu">
+  <ul class="site-nav__menu hidden shrink-0 lg:flex">
     {{ range .Site.Menus.main }}
     <li class="site-nav__item{{ if .Children }} site-nav__item--has-children{{ end }}">
       <a
@@ -35,7 +35,7 @@
     </li>
     {{ end }}
   </ul>
-  <details class="site-nav__mobile relative shrink-0">
+  <details class="site-nav__mobile relative shrink-0 lg:hidden">
     <summary class="site-nav__toggle" aria-label="Open menu">
       <svg class="site-nav__toggle-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path d="M4 8h16" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>

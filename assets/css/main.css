@@ -6,13 +6,15 @@
 @source inline("btn-{primary,ghost,amazon}");
 @source inline("status-{available,coming-soon,in-progress}");
 @source inline("prose-invert");
+@source inline("hidden sm:block lg:flex lg:hidden shrink-0");
 
 @theme {
   --breakpoint-xs: 320px;
+  /* Nav responsive visibility uses lg:/sm: in header.html */
   --breakpoint-sm: 480px;
   --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
+  --breakpoint-lg: 940px;
+  --breakpoint-xl: 1024px;
   --breakpoint-2xl: 1532px;
 
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
