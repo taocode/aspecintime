@@ -35,4 +35,4 @@ disableKinds = ["taxonomy", "term"]
     unsafe = true
 
 [security.node.permissions]
-  allowChildProcess = ["tailwindcss"]
+  disable = true
