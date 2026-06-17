@@ -9,7 +9,9 @@ status: coming-soon
 releaseDate: "Early 2027"
 amazonURL: ""
 cover: ""
-summary: "Book 3 of A Spec in Time — expected early 2027."
+summary: "Spec was created for one mission: removing the Harvesters from this section of the multiverse and bringing humans into interstellar consciousness. Book 3 continues that journey through the reset."
 ---
 
-The third book in the series. The rest to follow.
+What happens between the end and the beginning has yet to be seen by any living being. The amazing journey of Spec and her team of Freaks and Geeks will take the reader on a trip through time to see the reset and startup of Earth's recreation.
+
+*Inception* is the third book in the six-novel *A Spec in Time* series. Expected early 2027.

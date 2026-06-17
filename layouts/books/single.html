@@ -17,44 +17,65 @@
       {{ end }}
     </aside>
 
-    <div>
+    <div class="flex flex-col justify-center">
       <header>
-        {{ with .Params.series }}
-        <p class="text-sm uppercase tracking-[0.25em] text-amber">{{ . }}</p>
+        {{ if eq .Params.status "available" }}
+        <p class="text-sm font-semibold uppercase tracking-[0.3em] text-amber">Get it now!</p>
+        {{ else if eq .Params.status "coming-soon" }}
+        <p class="text-sm font-semibold uppercase tracking-[0.3em] text-ink-muted">Coming soon</p>
         {{ end }}
-        <h1 class="mt-2 font-display text-4xl text-parchment md:text-5xl">{{ .Title }}</h1>
-        <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-ink-muted">
-          {{ with .Params.bookNumber }}
-          <span>Book {{ . }}</span>
+
+        <h1 class="mt-3 font-display text-4xl text-parchment md:text-5xl">{{ .Title }}</h1>
+
+        <p class="mt-3 text-base text-ink-muted">
+          {{ if eq .Params.bookType "novella" }}
+          A novella in the {{ with .Params.series }}{{ . }}{{ else }}{{ .Site.Params.series }}{{ end }} universe
+          {{ else }}
+          Book {{ .Params.bookNumber }} of the {{ with .Params.series }}{{ . }}{{ else }}{{ .Site.Params.series }}{{ end }} series
           {{ end }}
+        </p>
+
+        <div class="mt-4 flex flex-wrap items-center gap-3 text-sm text-ink-muted">
           {{ with .Params.bookType }}
           {{ if eq . "novella" }}
           <span class="rounded border border-amber/40 px-2 py-0.5 text-amber">Novella</span>
           {{ end }}
           {{ end }}
           {{ with .Params.status }}
+          {{ if ne . "available" }}
           <span class="status-{{ . }} rounded border border-border px-2 py-0.5 capitalize">{{ replace . "-" " " }}</span>
+          {{ end }}
           {{ end }}
           {{ with .Params.releaseDate }}
           <span>{{ . }}</span>
           {{ end }}
         </div>
+
         {{ with .Params.summary }}
-        <p class="mt-6 text-lg leading-relaxed text-ink">{{ . }}</p>
+        <p class="mt-8 text-lg leading-relaxed text-ink md:text-xl">{{ . }}</p>
         {{ end }}
       </header>
 
-      {{ with .Params.amazonURL }}
-      <div class="mt-8">
+      {{ if or .Params.amazonURL .Site.Params.patreonURL }}
+      <div class="mt-8 flex flex-wrap gap-4">
+        {{ with .Params.amazonURL }}
         <a href="{{ . }}" class="btn-amazon" target="_blank" rel="noopener noreferrer">
-          Buy on Amazon
+          Get it on Amazon
         </a>
+        {{ end }}
+        {{ if and (eq $.Params.bookType "novella") $.Site.Params.patreonURL }}
+        <a href="{{ .Site.Params.patreonURL }}" class="btn-ghost" target="_blank" rel="noopener noreferrer">
+          Read on Patreon
+        </a>
+        {{ end }}
       </div>
       {{ end }}
 
-      <div class="prose prose-invert mt-12 max-w-none">
+      {{ if .Content }}
+      <div class="prose prose-invert mt-10 max-w-none">
         {{ .Content }}
       </div>
+      {{ end }}
     </div>
   </div>
 </article>
