@@ -21,6 +21,7 @@ disableKinds = ["taxonomy", "term"]
   seriesDescription = "A travel log from the end of the world, through to the beginning."
   patreonURL = "https://www.patreon.com/SpecinTime"
   facebookURL = "https://www.facebook.com/aspecintimeseries/"
+  thoughtfulSpotURL = "https://aspecintime.com/the-thoughtful-spot/"
   favicon = "favicon.ico"
 
 [caches]

@@ -1,29 +1,79 @@
 {{ define "main" }}
-<section class="mx-auto max-w-5xl px-6 py-16">
-  <header class="mb-12 text-center">
-    <h1 class="font-display text-4xl text-parchment md:text-5xl">{{ .Title }}</h1>
+{{ $blogURL := .Site.Params.thoughtfulSpotURL }}
+{{ $posts := hugo.Data.thoughtfulspot.posts }}
+<section class="mx-auto max-w-4xl px-6 py-20">
+  <header class="text-center">
+    <p class="text-sm uppercase tracking-[0.3em] text-amber">From M. Narf</p>
+    <h1 class="mt-3 font-display text-5xl text-parchment md:text-6xl">{{ .Title }}</h1>
     {{ with .Params.summary }}
     <p class="mx-auto mt-4 max-w-2xl text-lg text-ink-muted">{{ . }}</p>
     {{ end }}
   </header>
-  <div class="grid gap-8">
-    {{ range .Pages.ByDate.Reverse }}
-    <article class="rounded border border-border bg-void-light/40 p-8 transition-colors hover:border-amber/30">
-      <h2 class="font-display text-2xl text-parchment">
-        <a href="{{ .RelPermalink }}" class="hover:text-amber">{{ .Title }}</a>
+
+  {{ with .Params.image }}
+  <figure class="mx-auto mt-12 max-w-md text-center">
+    <img
+      src="{{ . }}"
+      alt="The Thoughtful Spot"
+      class="mx-auto rounded-sm border border-border"
+      width="238"
+      height="211"
+      loading="lazy"
+    />
+    <figcaption class="mt-6 space-y-3">
+      {{ with $.Params.imageQuote }}
+      <p class="font-display text-xl italic leading-relaxed text-parchment md:text-2xl">{{ . }}</p>
+      {{ end }}
+      {{ with $.Params.imageTagline }}
+      <p class="text-lg text-ink-muted">{{ . }}</p>
+      {{ end }}
+      {{ with $.Site.Params.patreonURL }}
+      <p class="text-sm text-ink-muted">
+        Support my work and feed an artist =
+        <a href="{{ . }}" class="text-amber hover:underline" target="_blank" rel="noopener noreferrer">Join my Patreon Page</a>
+        for more, so much more
+      </p>
+      {{ end }}
+    </figcaption>
+  </figure>
+  {{ end }}
+
+  {{ with $posts }}
+  <div class="mx-auto mt-16 max-w-2xl divide-y divide-border">
+    {{ range . }}
+    <article class="py-8 first:pt-0">
+      {{ with .category }}
+      <p class="text-xs uppercase tracking-widest text-amber">{{ . }}</p>
+      {{ end }}
+      <h2 class="mt-1 font-display text-2xl text-parchment">
+        <a
+          href="{{ .link }}"
+          class="hover:text-amber"
+          target="_blank"
+          rel="noopener noreferrer"
+        >{{ .title }}</a>
       </h2>
-      <time class="mt-1 block text-sm text-ink-muted" datetime="{{ .Date.Format "2006-01-02" }}">
-        {{ .Date.Format "January 2, 2006" }}
-      </time>
-      {{ with .Params.summary }}
-      <p class="mt-3 text-ink-muted">{{ . }}</p>
+      {{ with .excerpt }}
+      <p class="mt-2 text-ink-muted">{{ . }}</p>
+      {{ end }}
+      {{ with .date }}
+      <time class="mt-3 block text-sm text-ink-muted/80">{{ . }}</time>
       {{ end }}
     </article>
     {{ end }}
   </div>
-  {{ with .Content }}
-  <div class="prose prose-invert mx-auto mt-12 max-w-3xl">
-    {{ . }}
+  {{ end }}
+
+  {{ with $blogURL }}
+  <div class="mt-12 flex flex-col items-center gap-3">
+    <a
+      href="{{ . }}"
+      class="btn-ghost text-sm"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      More on the blog →
+    </a>
   </div>
   {{ end }}
 </section>

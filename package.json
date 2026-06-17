@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "A Spec in Time — literary sci-fi book series by M. Narf",
   "scripts": {
-    "dev": "hugo server -DF --disableFastRender",
-    "build": "hugo --gc --minify",
+    "fetch:blog": "node scripts/fetch-blog-feed.mjs",
+    "dev": "npm run fetch:blog && hugo server -DF --disableFastRender",
+    "build": "npm run fetch:blog && hugo --gc --minify",
     "deploy": "firebase deploy --only hosting",
     "clean": "del-cli public/**"
   },

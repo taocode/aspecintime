@@ -68,9 +68,10 @@ collections:
   - name: posts
     label: The Thoughtful Spot
     label_singular: Post
+    description: Blog posts are published on WordPress. Edit the landing page under Landing pages; do not add posts here unless migrating to Hugo.
     folder: content/posts
-    create: true
-    delete: true
+    create: false
+    delete: false
     slug: '{{slug}}'
     path: '{{slug}}/index'
     extension: md
@@ -157,6 +158,9 @@ collections:
         fields:
           - { name: title, label: Page title, widget: string }
           - { name: summary, label: Page summary, widget: text }
+          - { name: image, label: Banner image path, widget: string, required: false }
+          - { name: imageQuote, label: Quote under image, widget: string, required: false }
+          - { name: imageTagline, label: Tagline under quote, widget: string, required: false }
           - name: menu
             label: Menu
             widget: hidden
@@ -168,7 +172,7 @@ collections:
                 name: Blog
                 weight: 30
           - { name: date, label: Date, widget: hidden, default: '2024-01-01T00:00:00-05:00' }
-          - { name: body, label: Body, widget: markdown, modes: [raw] }
+          - { name: body, label: Intro text, widget: markdown, modes: [raw] }
 
       - file: content/about/_index.md
         label: Author Info page

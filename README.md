@@ -71,7 +71,9 @@ content/
 - Book submenu + Author Info submenu
 - `/reviews-2/` redirect
 
-**Next (Phase 2b / 3)**
+**Phase 2b** — Thoughtful Spot: minimalist landing; latest 3 posts from WordPress RSS at build time
+
+**Next (Phase 3)**
 - [ ] Sitting Room cover image
 - [ ] Thoughtful Spot post import
 - [ ] Firebase project + deploy secrets
