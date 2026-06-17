@@ -1,9 +1,10 @@
+---
 title: The Harvesters
 date: 2024-01-01T00:00:00-05:00
 draft: false
 series: "A Spec in Time"
 bookNumber: 1
-kind: book
+bookType: book
 status: available
 releaseDate: "2024"
 amazonURL: "https://www.amazon.com/"

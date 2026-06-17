@@ -17,7 +17,7 @@
     {{ with .Params.bookNumber }}
     <p class="text-xs uppercase tracking-widest text-amber">Book {{ . }}</p>
     {{ end }}
-    {{ with .Params.kind }}
+    {{ with .Params.bookType }}
     {{ if eq . "novella" }}
     <p class="text-xs uppercase tracking-widest text-amber">Novella</p>
     {{ end }}

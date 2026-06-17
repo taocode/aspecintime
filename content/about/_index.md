@@ -1,3 +1,4 @@
+---
 title: Author Info
 summary: About M. Narf, author of the A Spec in Time series.
 date: 2024-01-01T00:00:00-05:00

@@ -9,6 +9,8 @@ copyright = "Copyright © 2024, M. Narf. All rights reserved."
   [build.buildStats]
     enable = true
 
+disableKinds = ["taxonomy", "term"]
+
 [permalinks]
   books = "/books/:contentbasename"
 

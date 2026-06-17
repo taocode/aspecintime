@@ -1,9 +1,10 @@
+---
 title: Inception
 date: 2025-01-01T00:00:00-05:00
 draft: false
 series: "A Spec in Time"
 bookNumber: 3
-kind: book
+bookType: book
 status: coming-soon
 releaseDate: "Early 2027"
 amazonURL: ""

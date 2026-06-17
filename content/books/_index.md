@@ -1,3 +1,4 @@
+---
 title: My Books
 summary: The A Spec in Time series and related novellas — literary sci-fi from M. Narf.
 date: 2024-01-01T00:00:00-05:00

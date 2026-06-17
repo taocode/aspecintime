@@ -8,8 +8,8 @@
     {{ end }}
   </header>
 
-  {{ $books := where .Pages "Params.kind" "!=" "novella" }}
-  {{ $novellas := where .Pages "Params.kind" "novella" }}
+  {{ $books := where .Pages "Params.bookType" "!=" "novella" }}
+  {{ $novellas := where .Pages "Params.bookType" "novella" }}
 
   <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
     {{ range $books.ByParam "bookNumber" }}

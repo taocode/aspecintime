@@ -1,9 +1,10 @@
+---
 title: Sitting Room
 date: 2025-06-01T00:00:00-05:00
 draft: false
 series: "A Spec in Time"
 bookNumber: 0
-kind: novella
+bookType: novella
 status: available
 releaseDate: "2025"
 amazonURL: ""

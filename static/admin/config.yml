@@ -47,8 +47,8 @@ collections:
       - { name: title, label: Title, widget: string }
       - { name: series, label: Series, widget: string, default: 'A Spec in Time' }
       - { name: bookNumber, label: Book number (0 for novellas), widget: number, value_type: int, min: 0 }
-      - name: kind
-        label: Kind
+      - name: bookType
+        label: Type
         widget: select
         options: [book, novella]
         default: book

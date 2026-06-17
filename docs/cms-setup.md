@@ -87,7 +87,7 @@ backend:
 
 ### Book fields
 
-- `series`, `bookNumber`, `kind` (book / novella), `status` (available / coming-soon / in-progress)
+- `series`, `bookNumber`, `bookType` (book / novella), `status` (available / coming-soon / in-progress)
 - `releaseDate`, `amazonURL`, `cover`, `summary`, `draft`
 
 New entries default to **Draft** until published.

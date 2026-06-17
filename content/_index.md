@@ -1,3 +1,4 @@
+---
 title: Home
 date: 2024-01-01T00:00:00-05:00
 description: "A Spec in Time — a six-part literary sci-fi series by M. Narf. What side of the ampersand are you?"

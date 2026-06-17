@@ -27,7 +27,7 @@
           {{ with .Params.bookNumber }}
           <span>Book {{ . }}</span>
           {{ end }}
-          {{ with .Params.kind }}
+          {{ with .Params.bookType }}
           {{ if eq . "novella" }}
           <span class="rounded border border-amber/40 px-2 py-0.5 text-amber">Novella</span>
           {{ end }}
