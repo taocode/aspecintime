@@ -1,0 +1,52 @@
+{{ define "main" }}
+<section class="mx-auto max-w-6xl px-6 py-20">
+  <header class="text-center">
+    <p class="text-sm uppercase tracking-[0.3em] text-amber">{{ .Site.Params.series }}</p>
+    <h1 class="mt-3 font-display text-5xl text-parchment md:text-6xl">{{ .Title }}</h1>
+    <p class="mx-auto mt-4 max-w-2xl text-xl italic text-ink-muted">{{ .Site.Params.tagline }}</p>
+  </header>
+
+  {{ with .Params.intro }}
+  <div class="prose prose-invert mx-auto mt-12 max-w-3xl text-center">
+    {{ . | markdownify }}
+  </div>
+  {{ end }}
+
+  {{ $books := where (where .Site.RegularPages "Section" "books") "Params.kind" "!=" "novella" }}
+  {{ $novellas := where (where .Site.RegularPages "Section" "books") "Params.kind" "novella" }}
+
+  <div class="mt-20">
+    <h2 class="mb-8 text-center font-display text-3xl text-parchment">The Series</h2>
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {{ range $books.ByParam "bookNumber" }}
+        {{ partial "book-card.html" . }}
+      {{ end }}
+    </div>
+  </div>
+
+  {{ with $novellas }}
+  <div class="mt-20">
+    <h2 class="mb-8 text-center font-display text-3xl text-parchment">Novellas</h2>
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {{ range . }}
+        {{ partial "book-card.html" . }}
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+
+  {{ with .Content }}
+  <div class="prose prose-invert mx-auto mt-20 max-w-3xl">
+    {{ . }}
+  </div>
+  {{ end }}
+
+  {{ with .Site.Params.patreonURL }}
+  <div class="mt-16 text-center">
+    <a href="{{ . }}" class="btn-ghost" target="_blank" rel="noopener noreferrer">
+      Support the series on Patreon
+    </a>
+  </div>
+  {{ end }}
+</section>
+{{ end }}

@@ -1,0 +1,207 @@
+backend:
+  name: github
+  repo: taocode/aspecintime
+  branch: live
+  # Replace with your deployed sveltia-cms-auth Cloudflare Worker URL.
+  # See docs/cms-setup.md for one-time setup steps.
+  base_url: https://sveltia-cms-auth.REPLACE-ME.workers.dev
+  auth_endpoint: auth
+  commit_messages:
+    create: 'content: add {{collection}} entry "{{slug}}"'
+    update: 'content: update {{collection}} entry "{{slug}}"'
+    delete: 'content: delete {{collection}} entry "{{slug}}"'
+    uploadMedia: 'content: upload {{path}}"'
+    deleteMedia: 'content: delete {{path}}'
+
+site_url: https://aspecintime.com
+display_url: https://aspecintime.com
+logo_url: https://aspecintime.com/images/favicon.svg
+
+media_folder: static/images
+public_folder: /images
+
+editor:
+  preview: false
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  - name: books
+    label: Books
+    label_singular: Book
+    folder: content/books
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    path: '{{slug}}/index'
+    extension: md
+    format: yaml-frontmatter
+    summary: '{{title}} — Book {{bookNumber}}'
+    sortable_fields: [bookNumber, title, releaseDate]
+    view_filters:
+      - { label: Published, field: draft, pattern: false }
+      - { label: Drafts, field: draft, pattern: true }
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: series, label: Series, widget: string, default: 'A Spec in Time' }
+      - { name: bookNumber, label: Book number (0 for novellas), widget: number, value_type: int, min: 0 }
+      - name: kind
+        label: Kind
+        widget: select
+        options: [book, novella]
+        default: book
+      - name: status
+        label: Status
+        widget: select
+        options: [available, coming-soon, in-progress]
+        default: in-progress
+      - { name: releaseDate, label: Release date (free text), widget: string, required: false }
+      - { name: amazonURL, label: Amazon URL, widget: string, required: false }
+      - { name: cover, label: Cover image path (e.g. /images/books/slug.jpg), widget: string, required: false }
+      - { name: summary, label: Summary, widget: text }
+      - { name: draft, label: Draft (uncheck to publish), widget: boolean, default: true }
+      - { name: date, label: Created, widget: hidden, default: '{{now}}' }
+      - { name: body, label: Description, widget: markdown }
+
+  - name: posts
+    label: The Thoughtful Spot
+    label_singular: Post
+    folder: content/posts
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    path: '{{slug}}/index'
+    extension: md
+    format: yaml-frontmatter
+    sortable_fields: [date, title]
+    view_filters:
+      - { label: Published, field: draft, pattern: false }
+      - { label: Drafts, field: draft, pattern: true }
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime, format: 'YYYY-MM-DDTHH:mm:ssZ', default: '{{now}}' }
+      - { name: summary, label: Summary, widget: text, required: false }
+      - { name: draft, label: Draft, widget: boolean, default: true }
+      - { name: body, label: Body, widget: markdown }
+
+  - name: reviews
+    label: Reviews
+    label_singular: Review
+    folder: content/reviews
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    path: '{{slug}}/index'
+    extension: md
+    format: yaml-frontmatter
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Title (reviewer or headline), widget: string }
+      - { name: source, label: Source / reviewer name, widget: string, required: false }
+      - { name: rating, label: Rating (1–5), widget: number, value_type: int, min: 1, max: 5, required: false }
+      - { name: date, label: Date, widget: datetime, format: 'YYYY-MM-DDTHH:mm:ssZ', default: '{{now}}' }
+      - { name: body, label: Review text, widget: markdown }
+
+  - name: pages
+    label: Landing pages
+    label_singular: Page
+    files:
+      - file: content/_index.md
+        label: Home page
+        name: home
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: description, label: SEO description, widget: text, required: false }
+          - name: intro
+            label: Intro block
+            widget: object
+            collapsed: false
+            fields:
+              - { name: text, label: Intro text (markdown), widget: markdown, modes: [raw] }
+          - name: menu
+            label: Menu
+            widget: hidden
+            default:
+              main:
+                name: Home
+                weight: 10
+          - { name: date, label: Date, widget: hidden, default: '2024-01-01T00:00:00-05:00' }
+          - { name: body, label: Body, widget: markdown, modes: [raw] }
+
+      - file: content/books/_index.md
+        label: My Books landing page
+        name: books_index
+        fields:
+          - { name: title, label: Page title, widget: string }
+          - { name: summary, label: Page summary, widget: text }
+          - name: menu
+            label: Menu
+            widget: hidden
+            default:
+              main:
+                name: My Books
+                weight: 20
+              footer:
+                name: Books
+                weight: 20
+          - { name: date, label: Date, widget: hidden, default: '2024-01-01T00:00:00-05:00' }
+          - { name: body, label: Body, widget: markdown, modes: [raw] }
+
+      - file: content/posts/_index.md
+        label: The Thoughtful Spot landing page
+        name: posts_index
+        fields:
+          - { name: title, label: Page title, widget: string }
+          - { name: summary, label: Page summary, widget: text }
+          - name: menu
+            label: Menu
+            widget: hidden
+            default:
+              main:
+                name: The Thoughtful Spot
+                weight: 30
+              footer:
+                name: Blog
+                weight: 30
+          - { name: date, label: Date, widget: hidden, default: '2024-01-01T00:00:00-05:00' }
+          - { name: body, label: Body, widget: markdown, modes: [raw] }
+
+      - file: content/about/_index.md
+        label: Author Info page
+        name: about
+        fields:
+          - { name: title, label: Page title, widget: string }
+          - { name: summary, label: Page summary, widget: text }
+          - name: menu
+            label: Menu
+            widget: hidden
+            default:
+              main:
+                name: Author Info
+                weight: 40
+              footer:
+                name: About
+                weight: 40
+          - { name: date, label: Date, widget: hidden, default: '2024-01-01T00:00:00-05:00' }
+          - { name: body, label: Body, widget: markdown, modes: [raw] }
+
+      - file: content/reviews/_index.md
+        label: Reviews landing page
+        name: reviews_index
+        fields:
+          - { name: title, label: Page title, widget: string }
+          - { name: summary, label: Page summary, widget: text }
+          - name: menu
+            label: Menu
+            widget: hidden
+            default:
+              main:
+                name: Reviews
+                weight: 50
+              footer:
+                name: Reviews
+                weight: 50
+          - { name: date, label: Date, widget: hidden, default: '2024-01-01T00:00:00-05:00' }
+          - { name: body, label: Body, widget: markdown, modes: [raw] }

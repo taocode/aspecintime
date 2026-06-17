@@ -1,0 +1,35 @@
+name: Build Site + Firebase Deploy on merge
+on:
+  push:
+    branches:
+      - beta
+      - live
+jobs:
+  build_deploy:
+    name: 'Build and Deploy to: [${{ github.ref_name }}]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # package-lock.json may be generated on Windows; Linux CI needs platform-
+      # correct @parcel/watcher optional deps for @tailwindcss/cli.
+      - run: npm install --no-package-lock --no-audit --no-fund
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 0.161.0
+          extended: true
+      - name: Build
+        run: npm run build
+      - name: Deploy
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ASPECINTIME }}
+          channelId: ${{ github.ref_name }}
+          projectId: aspecintime

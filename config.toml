@@ -1,0 +1,31 @@
+baseURL = "https://aspecintime.com/"
+locale = "en-us"
+timeZone = "America/New_York"
+title = "A Spec in Time"
+author = "M. Narf"
+copyright = "Copyright © 2024, M. Narf. All rights reserved."
+
+[build]
+  [build.buildStats]
+    enable = true
+
+[permalinks]
+  books = "/books/:contentbasename"
+
+[params]
+  author = "M. Narf"
+  tagline = "What side of the ampersand are you?"
+  series = "A Spec in Time"
+  seriesDescription = "A travel log from the end of the world, through to the beginning."
+  patreonURL = "https://www.patreon.com/"
+  favicon = "favicon.ico"
+
+[caches]
+  [caches.getresource]
+    maxAge = "10s"
+
+[markup]
+  [markup.highlight]
+    style = "dracula"
+  [markup.goldmark.renderer]
+    unsafe = true

@@ -1,0 +1,35 @@
+{{ define "main" }}
+<section class="mx-auto max-w-6xl px-6 py-16">
+  <header class="mb-12 text-center">
+    <p class="text-sm uppercase tracking-[0.3em] text-amber">{{ .Site.Params.series }}</p>
+    <h1 class="mt-2 font-display text-4xl text-parchment md:text-5xl">{{ .Title }}</h1>
+    {{ with .Params.summary }}
+    <p class="mx-auto mt-4 max-w-2xl text-lg text-ink-muted">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  {{ $books := where .Pages "Params.kind" "!=" "novella" }}
+  {{ $novellas := where .Pages "Params.kind" "novella" }}
+
+  <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+    {{ range $books.ByParam "bookNumber" }}
+      {{ partial "book-card.html" . }}
+    {{ end }}
+  </div>
+
+  {{ with $novellas }}
+  <div class="mt-20">
+    <h2 class="mb-8 text-center font-display text-3xl text-parchment">Novellas</h2>
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {{ range . }}
+        {{ partial "book-card.html" . }}
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+
+  <div class="prose prose-invert mx-auto mt-16 max-w-3xl text-center">
+    {{ .Content }}
+  </div>
+</section>
+{{ end }}

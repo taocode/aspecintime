@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Locale }}" class="nojs">
+<head>
+  {{ partial "head.html" . }}
+  {{- block "headend" . }}{{ end -}}
+</head>
+<body class="min-h-screen starfield">
+  <div class="grid min-h-screen grid-rows-[auto_1fr_auto]">
+    <header class="site-header">
+      {{ partial "header.html" . }}
+    </header>
+    <main class="flex-1">
+      {{- block "main" . }}{{ end -}}
+    </main>
+    <footer>
+      {{ partial "footer.html" . }}
+    </footer>
+  </div>
+  {{ partial "scripts.html" . }}
+</body>
+</html>

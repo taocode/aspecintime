@@ -1,0 +1,15 @@
+<footer class="border-t border-border bg-void-light/50">
+  <div class="mx-auto max-w-6xl px-6 py-10 text-center text-sm text-ink-muted">
+    <p>{{ .Site.Copyright }}</p>
+    {{ with .Site.Params.patreonURL }}
+    <p class="mt-3">
+      <a href="{{ . }}" class="text-amber hover:underline" target="_blank" rel="noopener noreferrer">
+        Support on Patreon
+      </a>
+    </p>
+    {{ end }}
+    {{ range .Site.Menus.footer }}
+    <a href="{{ .URL }}" class="mx-2 hover:text-amber">{{ .Name }}</a>
+    {{ end }}
+  </div>
+</footer>

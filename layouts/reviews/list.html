@@ -1,0 +1,27 @@
+{{ define "main" }}
+<section class="mx-auto max-w-5xl px-6 py-16">
+  <header class="mb-12 text-center">
+    <h1 class="font-display text-4xl text-parchment md:text-5xl">{{ .Title }}</h1>
+    {{ with .Params.summary }}
+    <p class="mx-auto mt-4 max-w-2xl text-lg text-ink-muted">{{ . }}</p>
+    {{ end }}
+  </header>
+  <div class="grid gap-8">
+    {{ range .Pages.ByDate.Reverse }}
+    <blockquote class="rounded border border-border bg-void-light/40 p-8">
+      <div class="prose prose-invert max-w-none text-lg italic">
+        {{ .Content }}
+      </div>
+      <footer class="mt-4 text-sm text-ink-muted">
+        {{ with .Params.source }}
+        — {{ . }}
+        {{ end }}
+        {{ with .Params.rating }}
+        <span class="ml-2 text-amber">{{ . }}/5</span>
+        {{ end }}
+      </footer>
+    </blockquote>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

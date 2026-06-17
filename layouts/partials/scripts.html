@@ -1,0 +1,8 @@
+{{ $opts := dict "targetPath" "js/site.js" }}
+{{- $siteJS := resources.Get "js/site.js" | js.Build $opts -}}
+{{- if hugo.IsServer }}
+<script defer src="{{ $siteJS.RelPermalink }}"></script>
+{{ else }}
+{{- $scripts := $siteJS | minify | fingerprint | resources.PostProcess -}}
+<script defer src="{{ $scripts.RelPermalink }}" integrity="{{ $scripts.Data.Integrity }}"></script>
+{{ end -}}

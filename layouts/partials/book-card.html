@@ -1,0 +1,40 @@
+<article class="group flex flex-col">
+  <a href="{{ .RelPermalink }}" class="block">
+    {{ with .Params.cover }}
+    <img
+      src="{{ . }}"
+      alt="Cover of {{ $.Title }}"
+      class="book-cover-shadow aspect-[2/3] w-full rounded-sm border border-border object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+      loading="lazy"
+    />
+    {{ else }}
+    <div class="book-cover-shadow flex aspect-[2/3] w-full items-center justify-center rounded-sm border border-border bg-cosmos p-4 text-center transition-colors group-hover:border-amber/40">
+      <span class="font-display text-xl text-parchment">{{ .Title }}</span>
+    </div>
+    {{ end }}
+  </a>
+  <div class="mt-4 flex-1">
+    {{ with .Params.bookNumber }}
+    <p class="text-xs uppercase tracking-widest text-amber">Book {{ . }}</p>
+    {{ end }}
+    {{ with .Params.kind }}
+    {{ if eq . "novella" }}
+    <p class="text-xs uppercase tracking-widest text-amber">Novella</p>
+    {{ end }}
+    {{ end }}
+    <h3 class="mt-1 font-display text-2xl text-parchment">
+      <a href="{{ .RelPermalink }}" class="hover:text-amber">{{ .Title }}</a>
+    </h3>
+    {{ with .Params.status }}
+    <p class="mt-1 text-sm capitalize text-ink-muted">{{ replace . "-" " " }}</p>
+    {{ end }}
+    {{ with .Params.summary }}
+    <p class="mt-2 text-sm leading-relaxed text-ink-muted line-clamp-3">{{ . }}</p>
+    {{ end }}
+    {{ with .Params.amazonURL }}
+    <a href="{{ . }}" class="btn-ghost mt-4 text-xs" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
+      Amazon
+    </a>
+    {{ end }}
+  </div>
+</article>

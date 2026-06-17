@@ -1,0 +1,31 @@
+{
+  "name": "aspecintime",
+  "version": "1.0.0",
+  "description": "A Spec in Time — literary sci-fi book series by M. Narf",
+  "scripts": {
+    "dev": "hugo server -DF --disableFastRender",
+    "build": "hugo --gc --minify",
+    "deploy": "firebase deploy --only hosting",
+    "clean": "del-cli public/**"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taocode/aspecintime.git"
+  },
+  "keywords": [
+    "hugo",
+    "tailwindcss",
+    "sveltia-cms"
+  ],
+  "author": "taocode",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "del-cli": "^5.1.0",
+    "tailwindcss": "^4.3.0"
+  }
+}

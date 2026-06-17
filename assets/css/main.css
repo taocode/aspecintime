@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@source "hugo_stats.json";
+
+@source inline("btn-{primary,ghost,amazon}");
+@source inline("status-{available,coming-soon,in-progress}");
+@source inline("prose-invert");
+
+@theme {
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 665px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1532px;
+
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+
+  --color-void: var(--c-void);
+  --color-void-light: var(--c-void-light);
+  --color-ink: var(--c-ink);
+  --color-ink-muted: var(--c-ink-muted);
+  --color-parchment: var(--c-parchment);
+  --color-amber: var(--c-amber);
+  --color-amber-dim: var(--c-amber-dim);
+  --color-cosmos: var(--c-cosmos);
+  --color-cosmos-glow: var(--c-cosmos-glow);
+  --color-border: var(--c-border);
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-sm px-5 py-2.5 text-sm font-medium tracking-wide uppercase transition-colors duration-200;
+}
+
+@utility btn-primary {
+  @apply btn bg-amber text-void hover:bg-amber-dim;
+}
+
+@utility btn-ghost {
+  @apply btn border border-border text-parchment hover:border-amber hover:text-amber;
+}
+
+@utility btn-amazon {
+  @apply btn bg-amber/90 text-void hover:bg-amber;
+}
+
+@import "./modules/_vars.css";
+@import "./modules/style.css";

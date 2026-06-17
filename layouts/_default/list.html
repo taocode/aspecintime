@@ -1,0 +1,31 @@
+{{ define "main" }}
+<section class="mx-auto max-w-5xl px-6 py-16">
+  <header class="mb-12 text-center">
+    <h1 class="font-display text-4xl text-parchment md:text-5xl">{{ .Title }}</h1>
+    {{ with .Params.summary }}
+    <p class="mx-auto mt-4 max-w-2xl text-lg text-ink-muted">{{ . }}</p>
+    {{ end }}
+  </header>
+  <div class="prose prose-invert mx-auto max-w-none">
+    {{ .Content }}
+  </div>
+  {{ if .Pages }}
+  <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    {{ range .Pages.ByParam "bookNumber" }}
+      {{ partial "book-card.html" . }}
+    {{ else }}
+      {{ range .Pages.ByDate.Reverse }}
+        <article class="rounded border border-border bg-void-light/50 p-6">
+          <h2 class="font-display text-2xl text-parchment">
+            <a href="{{ .RelPermalink }}" class="hover:text-amber">{{ .Title }}</a>
+          </h2>
+          {{ with .Params.summary }}
+          <p class="mt-2 text-ink-muted">{{ . }}</p>
+          {{ end }}
+        </article>
+      {{ end }}
+    {{ end }}
+  </div>
+  {{ end }}
+</section>
+{{ end }}

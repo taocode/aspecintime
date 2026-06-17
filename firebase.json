@@ -1,0 +1,77 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "**/",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=600"
+          },
+          {
+            "key": "Content-Security-Policy",
+            "value": "default-src 'self'; img-src 'self' data: blob: https://*.githubusercontent.com https://m.media-amazon.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self'; media-src 'self' https://firebasestorage.googleapis.com/v0/b/aspecintime.appspot.com/; script-src 'self' 'unsafe-inline' https://unpkg.com; connect-src 'self' blob: data: https://unpkg.com https://api.github.com https://www.githubstatus.com https://sveltia-cms-auth.REPLACE-ME.workers.dev"
+          },
+          {
+            "key": "X-Frame-Options",
+            "value": "SAMEORIGIN"
+          },
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(jpg|jpeg|png|gif|webp|ico|svg)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=43200"
+          }
+        ]
+      },
+      {
+        "source": "**/*_@(resize|fit|fill)_q*.@(jpg|jpeg|png|gif|webp)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31540000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "/admin/**",
+        "headers": [
+          {
+            "key": "Content-Security-Policy",
+            "value": "default-src 'self'; img-src 'self' data: blob: https://*.githubusercontent.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self'; media-src 'self' blob:; script-src 'self' 'unsafe-inline' https://unpkg.com; connect-src 'self' blob: data: https://unpkg.com https://api.github.com https://www.githubstatus.com https://sveltia-cms-auth.REPLACE-ME.workers.dev"
+          },
+          {
+            "key": "Cross-Origin-Opener-Policy",
+            "value": "same-origin-allow-popups"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(css|js)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31540000, immutable"
+          }
+        ]
+      }
+    ]
+  }
+}

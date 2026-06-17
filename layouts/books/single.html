@@ -1,0 +1,61 @@
+{{ define "main" }}
+<article class="mx-auto max-w-6xl px-6 py-16">
+  <div class="grid gap-12 lg:grid-cols-[280px_1fr] lg:gap-16">
+    <aside class="mx-auto w-full max-w-[280px] lg:mx-0">
+      {{ with .Params.cover }}
+      <img
+        src="{{ . }}"
+        alt="Cover of {{ $.Title }}"
+        class="book-cover-shadow w-full rounded-sm border border-border object-cover"
+        width="280"
+        height="420"
+      />
+      {{ else }}
+      <div class="book-cover-shadow flex aspect-[2/3] w-full items-center justify-center rounded-sm border border-border bg-cosmos p-6 text-center">
+        <span class="font-display text-2xl text-parchment">{{ .Title }}</span>
+      </div>
+      {{ end }}
+    </aside>
+
+    <div>
+      <header>
+        {{ with .Params.series }}
+        <p class="text-sm uppercase tracking-[0.25em] text-amber">{{ . }}</p>
+        {{ end }}
+        <h1 class="mt-2 font-display text-4xl text-parchment md:text-5xl">{{ .Title }}</h1>
+        <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-ink-muted">
+          {{ with .Params.bookNumber }}
+          <span>Book {{ . }}</span>
+          {{ end }}
+          {{ with .Params.kind }}
+          {{ if eq . "novella" }}
+          <span class="rounded border border-amber/40 px-2 py-0.5 text-amber">Novella</span>
+          {{ end }}
+          {{ end }}
+          {{ with .Params.status }}
+          <span class="status-{{ . }} rounded border border-border px-2 py-0.5 capitalize">{{ replace . "-" " " }}</span>
+          {{ end }}
+          {{ with .Params.releaseDate }}
+          <span>{{ . }}</span>
+          {{ end }}
+        </div>
+        {{ with .Params.summary }}
+        <p class="mt-6 text-lg leading-relaxed text-ink">{{ . }}</p>
+        {{ end }}
+      </header>
+
+      {{ with .Params.amazonURL }}
+      <div class="mt-8">
+        <a href="{{ . }}" class="btn-amazon" target="_blank" rel="noopener noreferrer">
+          Buy on Amazon
+        </a>
+      </div>
+      {{ end }}
+
+      <div class="prose prose-invert mt-12 max-w-none">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</article>
+{{ end }}
