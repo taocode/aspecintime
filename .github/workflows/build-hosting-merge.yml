@@ -8,6 +8,8 @@ jobs:
   build_deploy:
     name: 'Build and Deploy to: [${{ github.ref_name }}]'
     runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --allow-child-process
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,8 +27,6 @@ jobs:
           hugo-version: 0.161.0
           extended: true
       - name: Build
-        env:
-          NODE_OPTIONS: --allow-child-process
         run: npm run build
       - name: Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
