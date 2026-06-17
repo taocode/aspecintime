@@ -9,10 +9,10 @@ jobs:
     name: 'Build and Deploy to: [${{ github.ref_name }}]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: npm
@@ -26,8 +26,9 @@ jobs:
           extended: true
       - name: Build
         run: npm run build
+      # Pin to Node 24 runtime commit until a post-v0.10.0 release ships.
       - name: Deploy
-        uses: FirebaseExtended/action-hosting-deploy@v0
+        uses: FirebaseExtended/action-hosting-deploy@500ac62
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ASPECINTIME }}
