@@ -46,7 +46,7 @@ firebase deploy --only hosting
 
 ### One-time setup
 
-1. Create Firebase project `aspecintime` and connect custom domain `aspecintime.com`.
+1. Create Firebase project `aspecintimeseries` and connect custom domain `aspecintime.com`.
 2. Add GitHub secret `FIREBASE_SERVICE_ACCOUNT_ASPECINTIME` (service account JSON).
 3. Follow [docs/cms-setup.md](docs/cms-setup.md) for Sveltia CMS OAuth + Cloudflare Worker.
 
@@ -73,12 +73,16 @@ content/
 
 **Phase 2b** — Thoughtful Spot: minimalist landing; latest 3 posts from WordPress RSS at build time
 
-**Next (Phase 3)**
-- [ ] Sitting Room cover image
-- [ ] Thoughtful Spot post import
-- [ ] Firebase project + deploy secrets
+**Phase 3** — deploy & cutover (in progress)
+- [x] Firebase project `aspecintimeseries` + manual deploy
+- [ ] GitHub Actions service account secret
+- [ ] `live` / `beta` branches
 - [ ] CMS OAuth Worker deployment
 - [ ] Domain cutover
+
+**Later**
+- [ ] Sitting Room cover image
+- [ ] Thoughtful Spot post import (deferred — WP remains master)
 
 ## License
 

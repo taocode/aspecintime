@@ -28,7 +28,7 @@
           },
           {
             "key": "Content-Security-Policy",
-            "value": "default-src 'self'; img-src 'self' data: blob: https://*.githubusercontent.com https://m.media-amazon.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self'; media-src 'self' https://firebasestorage.googleapis.com/v0/b/aspecintime.appspot.com/; script-src 'self' 'unsafe-inline' https://unpkg.com; connect-src 'self' blob: data: https://unpkg.com https://api.github.com https://www.githubstatus.com https://sveltia-cms-auth.REPLACE-ME.workers.dev"
+            "value": "default-src 'self'; img-src 'self' data: blob: https://*.githubusercontent.com https://m.media-amazon.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self'; media-src 'self' https://firebasestorage.googleapis.com/v0/b/aspecintimeseries.appspot.com/; script-src 'self' 'unsafe-inline' https://unpkg.com; connect-src 'self' blob: data: https://unpkg.com https://api.github.com https://www.githubstatus.com https://sveltia-cms-auth.REPLACE-ME.workers.dev"
           },
           {
             "key": "X-Frame-Options",
