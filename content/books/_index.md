@@ -6,6 +6,7 @@ menu:
   main:
     name: My Books
     weight: 20
+    identifier: books
   footer:
     name: Books
     weight: 20

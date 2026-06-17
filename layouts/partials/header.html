@@ -3,22 +3,43 @@
     <span class="block font-display text-2xl text-parchment group-hover:text-amber">{{ .Site.Title }}</span>
     <span class="block text-xs uppercase tracking-[0.2em] text-ink-muted">{{ .Site.Params.tagline }}</span>
   </a>
-  <ul class="hidden items-center gap-8 md:flex">
+  <ul class="hidden items-center gap-6 md:flex">
     {{ range .Site.Menus.main }}
-    <li>
+    <li class="{{ if .Children }}relative group{{ end }}">
       <a
         href="{{ .URL }}"
-        class="{{ if $.IsMenuCurrent "main" . }}text-amber{{ else }}text-ink hover:text-amber{{ end }} text-sm uppercase tracking-wider transition-colors"
+        class="{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}text-amber{{ else }}text-ink hover:text-amber{{ end }} text-sm uppercase tracking-wider transition-colors"
       >{{ .Name }}</a>
+      {{ with .Children }}
+      <ul class="absolute left-0 top-full z-20 hidden min-w-[220px] border border-border bg-void-light py-2 shadow-lg group-hover:block">
+        {{ range . }}
+        <li>
+          <a
+            href="{{ .URL }}"
+            class="{{ if $.IsMenuCurrent "main" . }}text-amber{{ else }}text-ink hover:text-amber{{ end }} block px-4 py-2 text-sm normal-case tracking-normal"
+          >{{ .Name }}</a>
+        </li>
+        {{ end }}
+      </ul>
+      {{ end }}
     </li>
     {{ end }}
   </ul>
   <details class="relative md:hidden">
     <summary class="cursor-pointer list-none text-sm uppercase tracking-wider text-ink">Menu</summary>
-    <ul class="absolute right-0 top-full z-10 mt-2 min-w-[180px] rounded border border-border bg-void-light py-2 shadow-lg">
+    <ul class="absolute right-0 top-full z-10 mt-2 max-h-[70vh] min-w-[220px] overflow-y-auto rounded border border-border bg-void-light py-2 shadow-lg">
       {{ range .Site.Menus.main }}
       <li>
-        <a href="{{ .URL }}" class="block px-4 py-2 text-sm text-ink hover:bg-cosmos hover:text-amber">{{ .Name }}</a>
+        <a href="{{ .URL }}" class="block px-4 py-2 text-sm font-medium text-parchment hover:bg-cosmos hover:text-amber">{{ .Name }}</a>
+        {{ with .Children }}
+        <ul class="pb-1">
+          {{ range . }}
+          <li>
+            <a href="{{ .URL }}" class="block px-6 py-1.5 text-sm text-ink-muted hover:text-amber">{{ .Name }}</a>
+          </li>
+          {{ end }}
+        </ul>
+        {{ end }}
       </li>
       {{ end }}
     </ul>

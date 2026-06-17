@@ -100,6 +100,7 @@ collections:
     fields:
       - { name: title, label: Title (reviewer or headline), widget: string }
       - { name: source, label: Source / reviewer name, widget: string, required: false }
+      - { name: featured, label: Featured quote, widget: boolean, default: false, required: false }
       - { name: rating, label: Rating (1–5), widget: number, value_type: int, min: 1, max: 5, required: false }
       - { name: date, label: Date, widget: datetime, format: 'YYYY-MM-DDTHH:mm:ssZ', default: '{{now}}' }
       - { name: body, label: Review text, widget: markdown }
@@ -143,6 +144,7 @@ collections:
               main:
                 name: My Books
                 weight: 20
+                identifier: books
               footer:
                 name: Books
                 weight: 20
@@ -174,6 +176,8 @@ collections:
         fields:
           - { name: title, label: Page title, widget: string }
           - { name: summary, label: Page summary, widget: text }
+          - { name: image, label: Image path, widget: string, required: false }
+          - { name: imageCaption, label: Image caption, widget: string, required: false }
           - name: menu
             label: Menu
             widget: hidden
@@ -181,6 +185,7 @@ collections:
               main:
                 name: Author Info
                 weight: 40
+                identifier: author
               footer:
                 name: About
                 weight: 40

@@ -19,7 +19,8 @@ disableKinds = ["taxonomy", "term"]
   tagline = "What side of the ampersand are you?"
   series = "A Spec in Time"
   seriesDescription = "A travel log from the end of the world, through to the beginning."
-  patreonURL = "https://www.patreon.com/"
+  patreonURL = "https://www.patreon.com/SpecinTime"
+  facebookURL = "https://www.facebook.com/aspecintimeseries/"
   favicon = "favicon.ico"
 
 [caches]

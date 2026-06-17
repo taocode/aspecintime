@@ -6,6 +6,18 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "redirects": [
+      {
+        "source": "/reviews-2",
+        "destination": "/reviews/",
+        "type": 301
+      },
+      {
+        "source": "/reviews-2/**",
+        "destination": "/reviews/",
+        "type": 301
+      }
+    ],
     "headers": [
       {
         "source": "**/",

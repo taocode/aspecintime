@@ -61,16 +61,22 @@ content/
 └── reviews/
 ```
 
-## Phase 1 status
+## Phase status
 
-- [x] Repo scaffold, Hugo + Tailwind config
-- [x] Book page template and seed content
-- [x] Sveltia CMS config (collections stub)
-- [x] Firebase CSP headers (replace `REPLACE-ME` worker hostname)
-- [x] CI workflow stub
-- [ ] Book cover images (add to `static/images/books/`)
-- [ ] Firebase project + GitHub repo creation
+**Phase 1** — scaffold, layouts, CI stub: done
+
+**Phase 2a** — content migration: done
+- Reviews, Author Info, More of Me from WordPress
+- Real Amazon, Patreon, and Facebook links
+- Book submenu + Author Info submenu
+- `/reviews-2/` redirect
+
+**Next (Phase 2b / 3)**
+- [ ] Sitting Room cover image
+- [ ] Thoughtful Spot post import
+- [ ] Firebase project + deploy secrets
 - [ ] CMS OAuth Worker deployment
+- [ ] Domain cutover
 
 ## License
 

@@ -7,21 +7,28 @@
     {{ end }}
   </header>
   <div class="grid gap-8">
-    {{ range .Pages.ByDate.Reverse }}
-    <blockquote class="rounded border border-border bg-void-light/40 p-8">
-      <div class="prose prose-invert max-w-none text-lg italic">
+    {{ range .Pages.ByDate }}
+    <blockquote class="rounded border border-border bg-void-light/40 p-8 {{ if .Params.featured }}border-amber/40{{ end }}">
+      {{ if .Params.featured }}
+      <p class="mb-3 text-xs uppercase tracking-widest text-amber">The only review that is important.</p>
+      {{ else if .Params.source }}
+      <p class="mb-3 text-xs uppercase tracking-widest text-ink-muted">From {{ .Params.source }}</p>
+      {{ end }}
+      <div class="prose prose-invert max-w-none text-lg {{ if not .Params.featured }}italic{{ end }}">
         {{ .Content }}
       </div>
-      <footer class="mt-4 text-sm text-ink-muted">
-        {{ with .Params.source }}
-        — {{ . }}
-        {{ end }}
-        {{ with .Params.rating }}
-        <span class="ml-2 text-amber">{{ . }}/5</span>
-        {{ end }}
-      </footer>
+      {{ with .Params.source }}
+      {{ if not $.Params.featured }}
+      <footer class="mt-4 text-sm text-ink-muted">— {{ . }}</footer>
+      {{ end }}
+      {{ end }}
     </blockquote>
     {{ end }}
   </div>
+  {{ with .Site.Params.patreonURL }}
+  <div class="mt-12 text-center">
+    <a href="{{ . }}" class="btn-ghost" target="_blank" rel="noopener noreferrer">Support the series on Patreon</a>
+  </div>
+  {{ end }}
 </section>
 {{ end }}

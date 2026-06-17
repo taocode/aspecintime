@@ -7,9 +7,14 @@ bookNumber: 2
 bookType: book
 status: available
 releaseDate: "2024"
-amazonURL: "https://www.amazon.com/"
+amazonURL: "https://www.amazon.com/gp/product/B0CSX7PPMF"
 cover: "/images/books/the-domes.png"
 summary: "Book 2 of A Spec in Time — now available on Amazon."
+menu:
+  main:
+    parent: books
+    name: "The Domes (Book 2)"
+    weight: 22
 ---
 
 The second book in the series. Beneath the domes, secrets wait.
