@@ -8,15 +8,13 @@ jobs:
   build_deploy:
     name: 'Build and Deploy to: [${{ github.ref_name }}]'
     runs-on: ubuntu-latest
-    env:
-      NODE_OPTIONS: --allow-child-process
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
           cache: npm
       # package-lock.json may be generated on Windows; Linux CI needs platform-
       # correct @parcel/watcher optional deps for @tailwindcss/cli.
