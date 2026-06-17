@@ -25,6 +25,8 @@ jobs:
           hugo-version: 0.161.0
           extended: true
       - name: Build
+        env:
+          NODE_OPTIONS: --allow-child-process
         run: npm run build
       - name: Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
