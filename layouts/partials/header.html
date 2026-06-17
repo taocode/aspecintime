@@ -1,22 +1,32 @@
-<nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-  <a href="/" class="group">
-    <span class="block font-display text-2xl text-parchment group-hover:text-amber">{{ .Site.Title }}</span>
-    <span class="block text-xs uppercase tracking-[0.2em] text-ink-muted">{{ .Site.Params.tagline }}</span>
+<nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-5">
+  <a href="/" class="group flex min-w-0 shrink items-center gap-3">
+    <img
+      src="/images/logo.png"
+      alt=""
+      width="64"
+      height="64"
+      class="h-14 w-14 shrink-0"
+      decoding="async"
+    />
+    <span class="min-w-0">
+      <span class="block font-display text-2xl text-parchment group-hover:text-amber">{{ .Site.Title }}</span>
+      <span class="site-nav__tagline text-xs uppercase tracking-[0.2em] text-ink-muted">{{ .Site.Params.tagline }}</span>
+    </span>
   </a>
-  <ul class="hidden items-center gap-6 md:flex">
+  <ul class="site-nav__menu">
     {{ range .Site.Menus.main }}
-    <li class="{{ if .Children }}relative group{{ end }}">
+    <li class="site-nav__item{{ if .Children }} site-nav__item--has-children{{ end }}">
       <a
         href="{{ .URL }}"
-        class="{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}text-amber{{ else }}text-ink hover:text-amber{{ end }} text-sm uppercase tracking-wider transition-colors"
+        class="site-nav__link {{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}text-amber{{ else }}text-ink hover:text-amber{{ end }} text-sm uppercase tracking-wider transition-colors"
       >{{ .Name }}</a>
       {{ with .Children }}
-      <ul class="absolute left-0 top-full z-20 hidden min-w-[220px] border border-border bg-void-light py-2 shadow-lg group-hover:block">
+      <ul class="site-nav__submenu">
         {{ range . }}
         <li>
           <a
             href="{{ .URL }}"
-            class="{{ if $.IsMenuCurrent "main" . }}text-amber{{ else }}text-ink hover:text-amber{{ end }} block px-4 py-2 text-sm normal-case tracking-normal"
+            class="site-nav__sublink {{ if $.IsMenuCurrent "main" . }}text-amber{{ else }}text-ink hover:text-amber{{ end }}"
           >{{ .Name }}</a>
         </li>
         {{ end }}
@@ -25,9 +35,14 @@
     </li>
     {{ end }}
   </ul>
-  <details class="relative md:hidden">
-    <summary class="cursor-pointer list-none text-sm uppercase tracking-wider text-ink">Menu</summary>
-    <ul class="absolute right-0 top-full z-10 mt-2 max-h-[70vh] min-w-[220px] overflow-y-auto rounded border border-border bg-void-light py-2 shadow-lg">
+  <details class="site-nav__mobile relative shrink-0">
+    <summary class="site-nav__toggle" aria-label="Open menu">
+      <svg class="site-nav__toggle-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 8h16" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+        <path d="M4 16h16" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+      </svg>
+    </summary>
+    <ul class="absolute right-0 top-full z-10 mt-2 max-h-[70vh] w-max min-w-[14rem] overflow-y-auto rounded border border-border bg-void-light py-2 shadow-lg">
       {{ range .Site.Menus.main }}
       <li>
         <a href="{{ .URL }}" class="block px-4 py-2 text-sm font-medium text-parchment hover:bg-cosmos hover:text-amber">{{ .Name }}</a>

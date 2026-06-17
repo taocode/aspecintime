@@ -8,7 +8,7 @@ bookType: novella
 status: available
 releaseDate: "2025"
 amazonURL: "https://www.amazon.com/Sitting-Room/dp/B0CW19LVZL/"
-cover: "/images/books/sitting-room.jpg"
+cover: ""
 summary: "A novella set in the A Spec in Time universe — read it now."
 ---
 

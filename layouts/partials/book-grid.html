@@ -1,0 +1,7 @@
+<div class="book-grid">
+  {{ range .pages }}
+  <div class="book-grid__item">
+    {{ partial "book-card.html" . }}
+  </div>
+  {{ end }}
+</div>

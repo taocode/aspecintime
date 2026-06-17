@@ -8,8 +8,8 @@
 @source inline("prose-invert");
 
 @theme {
-  --breakpoint-xs: 480px;
-  --breakpoint-sm: 665px;
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 480px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;

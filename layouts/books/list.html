@@ -11,20 +11,12 @@
   {{ $books := where .Pages "Params.bookType" "!=" "novella" }}
   {{ $novellas := where .Pages "Params.bookType" "novella" }}
 
-  <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-    {{ range $books.ByParam "bookNumber" }}
-      {{ partial "book-card.html" . }}
-    {{ end }}
-  </div>
+  {{ partial "book-grid.html" (dict "pages" ($books.ByParam "bookNumber")) }}
 
   {{ with $novellas }}
   <div class="mt-20">
     <h2 class="mb-8 text-center font-display text-3xl text-parchment">Novellas</h2>
-    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-      {{ range . }}
-        {{ partial "book-card.html" . }}
-      {{ end }}
-    </div>
+    {{ partial "book-grid.html" (dict "pages" .) }}
   </div>
   {{ end }}
 

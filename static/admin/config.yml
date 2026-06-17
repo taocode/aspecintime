@@ -116,12 +116,9 @@ collections:
         fields:
           - { name: title, label: Title, widget: string }
           - { name: description, label: SEO description, widget: text, required: false }
-          - name: intro
-            label: Intro block
-            widget: object
-            collapsed: false
-            fields:
-              - { name: text, label: Intro text (markdown), widget: markdown, modes: [raw] }
+          - { name: subtitle, label: Subtitle (under title), widget: markdown, modes: [raw], required: false }
+          - { name: blurb, label: Series blurb (H2 below books), widget: string, required: false }
+          - { name: intro, label: Intro text (below blurb), widget: markdown, modes: [raw], required: false }
           - name: menu
             label: Menu
             widget: hidden
@@ -130,7 +127,6 @@ collections:
                 name: Home
                 weight: 10
           - { name: date, label: Date, widget: hidden, default: '2024-01-01T00:00:00-05:00' }
-          - { name: body, label: Body, widget: markdown, modes: [raw] }
 
       - file: content/books/_index.md
         label: My Books landing page
