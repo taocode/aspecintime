@@ -33,3 +33,6 @@ disableKinds = ["taxonomy", "term"]
     style = "dracula"
   [markup.goldmark.renderer]
     unsafe = true
+
+[security.node.permissions]
+  allowChildProcess = ["tailwindcss"]
