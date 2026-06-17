@@ -11,6 +11,7 @@
     </header>
     <main class="flex-1">
       {{- block "main" . }}{{ end -}}
+      {{ partial "share.html" . }}
     </main>
     <footer>
       {{ partial "footer.html" . }}
